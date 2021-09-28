@@ -1,2 +1,2 @@
 # chromeExtensionExamples
-Some examples for extension development for chromium based browsers
+Some examples for extension development for Google Chrome

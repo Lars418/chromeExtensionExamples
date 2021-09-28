@@ -1,0 +1,1 @@
+chrome.developerPrivate.getExtensionsInfo({includeDisabled:true,includeTerminated:true});
