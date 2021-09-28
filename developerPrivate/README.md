@@ -1,7 +1,7 @@
 # developerPrivate API
 
-Beside normal APIs Chrome uses some special APIS internally. One of these is the `developerPrivate` API, which grants
-access to special developer features.
+Beside normal APIs Chrome uses some special ("private") ones internally. One of these is the `developerPrivate` API, which grants
+access to features regarding extensions.
 
 ## API reference
 
@@ -133,8 +133,17 @@ access to special developer features.
 
 The permission is only available to packaged apps ("Apps"), this means we need to add the `app` entry and specify a script inside it.
 We also need to define the `developerPrivate` and `management` permissions. If we don't define the second one, `developerPrivate` will be null.
-The `key` has to be set, as the permission is only available to selected extensions.
+The `key` has to be set, as the permission is only available to selected extensions. 
 
-https://github.com/chromium/chromium/blob/ef3c0b7e3f9387e57570cdfd6c7e65ee5add4ec9/chrome/common/extensions/api/_permission_features.json#L222
+There are several whitelisted extensions. You can use one of the following values for the `key` attribute:
+- `MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2OvldPjAqgEboHyyZM7GpCMmGMSQ8aExOlQyOhN3C9fDRXqnAN/Ie20TEwD9Eb2CciV3Ru4Gm7PmDnkHzsljD84qLgBdN39FzPGDyViXTS442xTElWRZMZQfJYQpbMpiePL720kTHgLLAcwTgdP9DnvRPrKukIs/U4Y76NFk7NNbsNOc6FWisLJykw2POTB1RR5ZlZrA4Ax1P7kt7qQdomE6i8wy1TA1jDhG8AhEXKRfpyELvJmzyVIyR9uiSHDHCdihiS5oyjADjmmbklvL7Ns0cSAgEX/lWN8UX8r17zoKZzJ0MkmCQ5Nlfql8qUtn2oZXaHztkkAcXCxkq9/37QIDAQAB`
+- `MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiC2CjQDYZcE1Pn8QHpLh1F32QiJqcO63CObY4ulPEHHmIDfIyflB2WXc7D1bDJtHBahkJEtHY4I8wN8gjowgYVKiiqMpwiuV7Evivyf7Qyvg537Kb0aBdGKVFCpk12H/Z9k835BTWZ3t/uk/ZK2r4fwUF06LYWtZ3XS1W5OrV0NTxGF/keX4qidKMDl3pKLNjKPSPl0G3WFEMui+L68VnC2HzCfrpyrC1/oGGLTa2xg/lkEZhzuUUjWsar8YazZYmVPmZQOjdyls/tGxrVac3IcDaSve40PuKgmmn7H2Gb1h4NKRbDTgBhqmIewQCGpuHMRf/EXNDROhNCx2byStkwIDAQAB`
+- `MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwqXKrcvbi1a1IjFM5COs07Ee9xvPyOSh9dhEF6kwBGjAH6/4F7MHOfPk+W04PURi707E8SsS2iCkvrMiJPh4GnrZ3fWqFUzlsAcUljcYbkyorKxglwdZEXWbFgcKVR/uzuzXD8mOcuXRLu0YyVSdEGzhfZ1HkeMQCKEncUCL5ziE4ZkZJ7I8YVhVG+uiROeMg3zjxxSQrYHOfG5HOqmVslRPCfyiRbIHH3JPD0lax5FudngdKy0+1nkkqVJCpRSf75cRRnxGPjdEvNzTEFmf5oGFxSVs7iXoVQvNXB35Qfyw5rV6N+JyERdu6a7xEnz9lbw41m/noKInlfP+uBQuaQIDAQAB`
+- `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDV/GMX7sjLe3ceUizalvfZK0qhsWnXcjJ3cCbYvXFo43Q2F7SZM8/0roex0wSpNRSO1j9c/m7YXLYBAOiy21ERRJEVEIvOvWp1LLeoBSsbQnnhSPKInqUrkA8fMRCqI0gHRUK3K7dIiOC2A7jkWUMs4DqRiQSkntUUGzVIoY6OYQIDAQAB`
+- `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIhi5zNAGD4SvQyCSVCj7KIt4w3OX0r9S7VFdxtzhagQVm58Kuz5XoJsbIhISEHjukldlZQZn9s0e9x1aK/s48ZJMe5KHyv6o0pYsslPEMro3aZG8bkPW9HMUMHe9uhyhw2DT90UMzWrOatOdj2QI41J+9Q4eP2TgXBTfJstE5QQIDAQAB`
 
-https://stackoverflow.com/questions/35932942/how-to-load-build-chrome-app-extension-and-run-programmatically/35951201#35951201
+## References
+
+- [Permission features](https://github.com/chromium/chromium/blob/ef3c0b7e3f9387e57570cdfd6c7e65ee5add4ec9/chrome/common/extensions/api/_permission_features.json#L222)
+- [Whitelisted extensions](https://stackoverflow.com/questions/35932942/how-to-load-build-chrome-app-extension-and-run-programmatically/35951201#35951201)
+- [developerPrivate implementation](https://github.com/chromium/chromium/blob/ef3c0b7e3f9387e57570cdfd6c7e65ee5add4ec9/third_party/closure_compiler/externs/developer_private.js)
